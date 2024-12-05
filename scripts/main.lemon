@@ -1,0 +1,60 @@
+global u16 amountOfOverlays = 0
+global u8 NBO_OPACITY
+
+function void Renderer.drawCustomSprite(u64 key, s16 px, s16 py, u8 atex, u8 flags, u16 renderQueue)
+{
+	if (renderQueue == 0xffff) // sorry
+		--renderQueue
+	base.Renderer.drawCustomSprite(key, px, py, atex, flags, renderQueue)
+}
+
+//# post-update-hook
+function void PostFrameUpdate()
+{
+	base.PostFrameUpdate()
+	basicOverlay.drawOverlay()
+}
+
+function void VDP.Config.setActiveDisplay(u8 enable)
+{
+	if (enable == false && global.game_mode == 0x04) // i believe only done on the title screen?
+	{
+		base.VDP.Config.setActiveDisplay(true)
+		basicOverlay.drawOverlay() // done just in case
+		return
+	}
+	base.VDP.Config.setActiveDisplay(enable)
+}
+
+function void basicOverlay.drawOverlay()
+{
+	if (amountOfOverlays != 0) // this is only true if the screen is NOT getting cleared for whatever reason
+		return
+	SpriteHandle dark_screen = Renderer.addSpriteHandle(basicOverlay.getOverlayKey(), getScreenWidth()/2, 0, 0xffff)
+	amountOfOverlays++
+	dark_screen.setFlags(0x40 | 0x80)
+	dark_screen.setOpacity(basicOverlay.getOpacity())
+	float scale = basicOverlay.getScale()
+	dark_screen.setScale(scale, 1.0f)
+}
+
+function string basicOverlay.getOverlayKey()
+{
+	return "dark_screen"
+}
+
+function float basicOverlay.getScale()
+{
+	return getScreenWidth() / 400.0 // "400.0" needs to be replaced with the width of a custom image
+}
+
+function float basicOverlay.getOpacity()
+{
+	return NBO_OPACITY ? 0.11 : 0.055
+}
+
+function void Renderer.resetSprites()
+{
+	amountOfOverlays = 0
+	base.Renderer.resetSprites()
+}

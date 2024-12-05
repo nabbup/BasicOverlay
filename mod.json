@@ -1,0 +1,28 @@
+{
+	"Metadata":
+	{
+		"Name": "Basic Overlay",
+		"UniqueID": "nabbup-basic-overlay",
+		"Author": "nabbup",
+		"Description": "By default intended to replicate the look RSDK or PC Port/Digitizer palettes",
+		"GameVersion": "24.02.02.0"
+	},
+	"Settings":
+	{
+		"nabbup-basic-overlay":
+		[
+			{
+				"InternalName": "NBO_OPACITY",
+				"DisplayName": "Opacity",
+				"Category": "Visuals",
+				"Variable": "NBO_OPACITY",
+				"DefaultValue": "0x00",
+				"Options":
+				{
+					"0x00": "Lighter (PC Port)",
+					"0x01": "Darker (RSDK)",
+				}
+			}
+		]
+	}
+}
