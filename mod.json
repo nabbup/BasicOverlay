@@ -3,8 +3,8 @@
 	{
 		"Name": "Basic Overlay",
 		"UniqueID": "nabbup-basic-overlay",
-		"Author": "nabbup",
-		"Description": "By default intended to replicate the look RSDK or PC Port/Digitizer palettes",
+		"Author": "Raine (nabbup)",
+		"Description": "Overlays an image onto the game display for fun.\nBy default meant to recreate the RSDK (aka Origins) colors, has an option for PC Port/Digitizer colors.\nCan be used for other kinds of overlays.\n\nCould potentially be unstable on low-end devices, beware.",
 		"GameVersion": "24.02.02.0"
 	},
 	"Settings":
@@ -16,11 +16,11 @@
 				"DisplayName": "Opacity",
 				"Category": "Visuals",
 				"Variable": "NBO_OPACITY",
-				"DefaultValue": "0x00",
+				"DefaultValue": "0x01",
 				"Options":
 				{
 					"0x00": "Lighter (PC Port)",
-					"0x01": "Darker (RSDK)",
+					"0x01": "Darker (RSDK)"
 				}
 			}
 		]

@@ -1,6 +1,25 @@
-global u16 amountOfOverlays = 0
-global u8 NBO_OPACITY
+// thanks for using this mod!
+// ~ Raine
 
+global u8 amountOfOverlays = 0 // kinda dumb but whatever!
+global u8 NBO_OPACITY // option that comes with the mod
+
+function string basicOverlay.getOverlayKey()
+{
+	return "dark_screen"
+}
+
+function float basicOverlay.getScale()
+{
+	return getScreenWidth() / 400.0 // "400.0" needs to be replaced with the width of a custom image
+}
+
+function float basicOverlay.getOpacity()
+{
+	return NBO_OPACITY ? 0.115 : 0.06 // NBO_OPACITY is not necessary for other people's mods that use this as a base.
+}
+
+// funny silly hack to prevent stuff from appearing above the overlay!!!! (definitely not smart)
 function void Renderer.drawCustomSprite(u64 key, s16 px, s16 py, u8 atex, u8 flags, u16 renderQueue)
 {
 	if (renderQueue == 0xffff) // sorry
@@ -36,21 +55,6 @@ function void basicOverlay.drawOverlay()
 	dark_screen.setOpacity(basicOverlay.getOpacity())
 	float scale = basicOverlay.getScale()
 	dark_screen.setScale(scale, 1.0f)
-}
-
-function string basicOverlay.getOverlayKey()
-{
-	return "dark_screen"
-}
-
-function float basicOverlay.getScale()
-{
-	return getScreenWidth() / 400.0 // "400.0" needs to be replaced with the width of a custom image
-}
-
-function float basicOverlay.getOpacity()
-{
-	return NBO_OPACITY ? 0.11 : 0.055
 }
 
 function void Renderer.resetSprites()
