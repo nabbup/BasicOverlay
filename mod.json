@@ -3,9 +3,9 @@
 	{
 		"Name": "Basic Overlay",
 		"UniqueID": "nabbup-basic-overlay",
-		"Author": "Raine (nabbup)",
+		"Author": "Ramona (nabbup)",
 		"Description": "Overlays an image onto the game display for fun.\nBy default meant to recreate the RSDK (aka Origins) colors, has an option for PC Port/Digitizer colors.\nCan be used for other kinds of overlays.\n\nCould potentially be unstable on low-end devices, beware.",
-		"GameVersion": "24.02.02.0"
+		"GameVersion": "25.02.15.0"
 	},
 	"Settings":
 	{
